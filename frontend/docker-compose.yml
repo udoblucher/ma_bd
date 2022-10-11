@@ -1,0 +1,18 @@
+version: '1'
+services:
+  nginx:
+    container_name: ma-lb
+    restart: always
+    image: "nginx:latest"
+    ports:
+      - "8080:8080"
+    volumes:
+      - ./nginx:/etc/nginx/conf.d
+    networks:
+      - login_web_network
+      - register_web_network
+networks:
+  login_web_network:
+    external: true
+  register_web_network:
+    external: true

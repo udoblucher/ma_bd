@@ -1,0 +1,30 @@
+version: '3'
+services:
+  webapp:
+    container_name: register
+    restart: always
+    env_file: .env
+    build: .
+    ports:
+      - "5010:5010"
+    networks:
+      - db_network
+      - web_network
+  nginx:
+    container_name: register-lb
+    restart: always
+    image: "nginx:latest"
+    ports:
+      - "5095:5095"
+    volumes:
+      - ./nginx:/etc/nginx/conf.d
+    networks:
+      - web_network
+    depends_on: 
+      - webapp
+networks:
+  db_network:
+    driver: bridge
+  web_network:
+    driver: bridge
+ 

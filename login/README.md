@@ -1,0 +1,1 @@
+## Django App for Lab purpose

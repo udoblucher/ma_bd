@@ -1,11 +1,12 @@
-version: '1'
+version: '3'
 services:
   nginx:
     container_name: ma-lb
     restart: always
     image: "nginx:latest"
     ports:
-      - "8080:8080"
+      - "80:80"
+      - "443:443"
     volumes:
       - ./nginx:/etc/nginx/conf.d
     networks:
